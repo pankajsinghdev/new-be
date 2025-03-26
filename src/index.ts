@@ -29,7 +29,7 @@ app.post("/user", async (req: Request, res: Response) => {
   });
 });
 
-app.listen(port, (err) => {
+app.listen(port, (err: any) => {
   if (!err) {
     console.log("successfully connected to post ", port);
   } else {
