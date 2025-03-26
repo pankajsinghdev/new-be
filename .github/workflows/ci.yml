@@ -1,0 +1,15 @@
+name: ci pipeline
+on:
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  Continuous-integration:
+    name: Performs linting, formatting on the application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout to repository
+        uses: actions/checkout@v3
+      - name: Run build
+        run: npm run build
