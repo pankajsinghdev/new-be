@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 
 const app = express();
@@ -9,15 +9,14 @@ app.use(cors());
 
 const prisma = new PrismaClient();
 
-app.get("/", async (req, res) => {
+app.get("/", async (req: Request, res: Response) => {
   const users = await prisma.user.findMany();
   res.json({
     users,
   });
 });
 
-app.post("/user", async (req, res) => {
-  console.log(req.body);
+app.post("/user", async (req: Request, res: Response) => {
   const { username, password } = req.body;
   const user = await prisma.user.create({
     data: {
